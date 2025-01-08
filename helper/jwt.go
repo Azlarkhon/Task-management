@@ -19,7 +19,7 @@ func GenerateJWT(userID int) (string, error) {
 
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 
-	signedToken, err := token.SignedString([]byte(config.JWTSecret))
+	signedToken, err := token.SignedString([]byte(config.Init.JWTSecret))
 	if err != nil {
 		return "", err
 	}
@@ -32,7 +32,7 @@ func VerifyJWT(tokenString string) (*jwt.Token, jwt.MapClaims, error) {
 		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
 			return nil, jwt.ErrSignatureInvalid
 		}
-		return []byte(config.JWTSecret), nil
+		return []byte(config.Init.JWTSecret), nil
 	})
 
 	if err != nil {

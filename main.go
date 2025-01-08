@@ -18,6 +18,7 @@ func main() {
 	routes.TagRoutes(router)
 	routes.TaskRoutes(router)
 	routes.CommentRoutes(router)
+	routes.GoogleLoginRoutes(router)
 
 	router.Use(middleware.CorsMiddleware)
 
