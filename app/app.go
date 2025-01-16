@@ -14,13 +14,13 @@ func Run() error {
 
 	router := gin.Default()
 
+	router.Use(middleware.CorsMiddleware)
+
 	routes.UserRoutes(router)
 	routes.TagRoutes(router)
 	routes.TaskRoutes(router)
 	routes.CommentRoutes(router)
 	routes.GoogleLoginRoutes(router)
-
-	router.Use(middleware.CorsMiddleware)
 
 	return router.Run(":" + config.Init.Port)
 }
