@@ -108,6 +108,7 @@ func (x *User) Login(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, gin.H{
+		"id":       storedUser.ID,
 		"token":      token,
 		"is_success": true,
 	})
