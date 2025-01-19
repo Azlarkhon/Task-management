@@ -98,11 +98,6 @@ func (x *Google) GoogleCallback(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{
-		"data": gin.H{
-			"user": newUser,
-		},
-		"token":      jwtToken,
-		"is_success": true,
-	})
+	redirectURL := config.Init.ServerIp + "/user/" + jwtToken
+    c.Redirect(http.StatusTemporaryRedirect, redirectURL)
 }

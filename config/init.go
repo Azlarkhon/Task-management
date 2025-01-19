@@ -20,6 +20,7 @@ type Config struct {
 	ScopeProfile string
 	ScopeEmail   string
 	JWTSecret    string
+	ServerIp     string
 }
 
 var Init Config
@@ -43,5 +44,6 @@ func init() {
 		ScopeProfile: os.Getenv("ScopeProfile"),
 		ScopeEmail:   os.Getenv("ScopeEmail"),
 		JWTSecret:    os.Getenv("JWT_SECRET"),
+		ServerIp:     os.Getenv("SERVER_ip"),
 	}
 }
